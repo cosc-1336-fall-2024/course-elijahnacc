@@ -8,11 +8,14 @@ def get_factorial(num):
         
     return factor
 
-#returns sum of prime integers up to parameter
+#returns sum of odd integers up to parameter
 def sum_odd_numbers(num):
     
     index = 0
     total = 0
     
     while index <= num:
-        total = total
+        total = total + index * (index % 2)
+        index += 1
+
+    return total
