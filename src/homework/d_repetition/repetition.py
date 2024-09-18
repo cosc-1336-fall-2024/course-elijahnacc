@@ -19,3 +19,10 @@ def sum_odd_numbers(num):
         index += 1
 
     return total
+
+#displays menu options
+def display_menu():
+    print("Repetition Menu")
+    print("1) Factorial")
+    print("2) Sum Odd Numbers")
+    print("3) Exit Application")
