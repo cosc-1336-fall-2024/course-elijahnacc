@@ -16,6 +16,7 @@ def main():
             menu_selection = int(input("Please Enter Menu Selection # : "))
 
         while menu_selection != 3 and func_out == False:
+            
             if menu_selection == 1: # factorial
                 fact_input = int(input("Please Enter Number 1-9 : ")) # prompts + input to be factored
                 if fact_input > 0 and fact_input < 10: # verify value is acceptable
@@ -24,6 +25,7 @@ def main():
                     func_out = True # ends loop
                 else:
                     print("Invalid Value") # displays error
+            
             elif menu_selection == 2: # sum odd numbers
                 sum_input = int(input("Please Enter Number 1-99: ")) #prompts + input to be summed
                 if sum_input > 0 and sum_input < 100: # verify value is acceptable
