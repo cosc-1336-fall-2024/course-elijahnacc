@@ -9,6 +9,7 @@ def main():
         
         display_menu()
 
+        menu_selection = 0
         func_out = False # variable for loop exit
 
         # prompts for user selection + verifies acceptable value
