@@ -1,40 +1,33 @@
-from dictionary import get_p_distance_matrix
+from dictionary import add_inventory, remove_inventory_widget, display_menu, prompt_selection, prompt_inventory
 
 def main():
 
-    selection = 0
+    user_inventory : dict = {}
+    selection : int = 0
 
-    while selection != 2:
+    while True:
 
-        print("MENU\n1 - Get P Distance Matrix\n2 - Exit")
-        selection = int(input('Please enter menu selection: '))
+        display_menu()
+        selection = prompt_selection()
 
+        if selection == 4:
+            break
+        
         if selection == 1:
+            widget, quantity = prompt_inventory(selection)
+            add_inventory(user_inventory, widget, quantity)
 
-            grid_size = int(input('Enter number of strands: '))
-            strand_list = [[0 for j in range(10)]for i in range(4)]
-            temp_list = []
+        if selection == 2:
+            widget = prompt_inventory(selection)
+            status = remove_inventory_widget(user_inventory, widget)
+            print(status)
 
-            for i in range(grid_size):
-                while True:
-                    
-                    strand = ''
-                    
-                    while len(strand) != 10:
-                        strand = str(input(f'Enter strand {i+1}: '))
-                        if len(strand) == 10:
-                            break
-                        print('Strand must be 10 characters')
+        if selection == 3:
+            print(user_inventory)
 
-                    strand = strand.upper()
-                    for j in range(10):
-                        strand_list[i][j] = strand[j]
+        
+    exit()
 
-                    break
-
-            matrix = get_p_distance_matrix(strand_list, grid_size)
-            print(matrix)
-            exit()
 
 if __name__ == '__main__':
     main()

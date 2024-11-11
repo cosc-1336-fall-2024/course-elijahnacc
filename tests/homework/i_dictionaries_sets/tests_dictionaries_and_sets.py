@@ -1,26 +1,28 @@
 import unittest
-from src.homework.i_dictionaries_sets.dictionary import get_p_distance, get_p_distance_matrix
+from src.homework.i_dictionaries_sets.dictionary import add_inventory, remove_inventory_widget
 
 class Test_Config(unittest.TestCase):
 
-    def test_p_distance(self):
-        self.assertEqual
-        (.4, get_p_distance(
-            ['T','T','T','C','C','A','T','T','T','A'], 
-            ['G','A','T','T','C','A','T','T','T','C']))
+    def test_add_inventory(self):
+       
+       test_values : list = [10, 25, -10]
+       expected_value : int = 0
+       
+       test_dictionary : dict = {}
+       widget_name : str = "Widget1"
+       
+       for i in range(len(test_values)):
 
-    def test_p_distance_matrix(self):
-
-        input_dna = [['T','T','T','C','C','A','T','T','T','A'],
-                     ['G','A','T','T','C','A','T','T','T','C'],
-                     ['T','T','T','C','C','A','T','T','T','T'],
-                     ['G','T','T','C','C','A','T','T','T','A']
-        ]
+        expected_value += test_values[i]
+        quantity : int = test_values[i]
         
-        assertion = [[0.0, 0.4, 0.1, 0.1],
-                     [0.4, 0.0, 0.4, 0.3],
-                     [0.1, 0.4, 0.0, 0.2],
-                     [0.1, 0.3, 0.2, 0.0]
-        ]
+        add_inventory(test_dictionary, widget_name, quantity)
 
-        self.assertEqual(assertion, get_p_distance_matrix(input_dna, 4))
+        self.assertEqual({widget_name : expected_value}, test_dictionary)
+
+    def test_remove_inventory_widget(self):
+       
+       widget_inventory : dict = {"Widget1" : 7, "Widget2" : 12}
+       remove_inventory_widget(widget_inventory, "Widget1")
+       self.assertEqual(1, len(widget_inventory))
+       self.assertEqual(True, "Widget2" in widget_inventory)

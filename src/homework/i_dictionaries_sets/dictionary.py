@@ -1,31 +1,39 @@
 
-def get_p_distance(list1, list2):
-
-    # For Loop iterates through parameters : Accumulates distance when given index of lists is !=
+def add_inventory(dictionary: dict, widget_name: str, quantity: int):
     
-    distance = 0
+    if widget_name in dictionary:
+        dictionary[widget_name] += quantity
+    else:
+        dictionary[widget_name] = quantity
+        
+def remove_inventory_widget(dictionary: dict, widget_name: str):
 
-    for i in range(len(list1)):
-        if list1[i] != list2[i]:
-            distance += 0.1
+    if widget_name in dictionary:
+        del dictionary[widget_name]
+        status : str = "Record deleted"
+    else:
+        status : str = "Item not found"
     
-    return distance
+    return status
 
-def get_p_distance_matrix(list1, grid_size):
 
-    # Matrix is defined by [] : For Loop appends brackets and 0 values by Grid Size
-    # Nested For Loop iterates through rows and columns of the nested list matrix
-    # If P Distance is not 0.0 for given index : Runs function to get distance and assigns to matrix at index
+def display_menu():
+    
+    print("Inventory Menu\n1 - Add or Update Item\n2 - Delete Item\n3 - Display Current Inventory\n4 - Exit")
 
-    matrix = []
-    for row in range(grid_size):
-        matrix.append([])
-        for col in range(grid_size):
-            matrix[row].append(0.00000)
+def prompt_selection():
 
-    for row in range(len(list1)):
-        for col in range(len(list1)):
-            if list1[row] != list1[col]:
-                matrix[row][col] = round(get_p_distance(list1[row], list1[col]), 5)
+    selection = int(input("Enter menu selection: "))
 
-    return matrix
+    return selection
+
+def prompt_inventory(selection):
+
+    widget_name = str(input("Enter widget name: "))
+
+    if selection == 1:
+        quantity = int(input("Enter quantity: "))
+        return widget_name, quantity
+
+    else:
+        return widget_name
